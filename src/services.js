@@ -61,7 +61,14 @@ export default class EventService {
      * @return {null | Event}
      */
     getLongestEvent() {
-        return null; //TODO
+       const events = this._eventRepository.getAll();
+       let longestEvent = null;
+       events.forEach(event => {
+           if (this.getEventDuration(event) >= 0 && this.getEventDuration(event) > longestEvent) {
+               longestEvent = event;
+           }
+       })
+       return longestEvent;
     }
 
     /**
@@ -110,6 +117,15 @@ export default class EventService {
     getCurrentEvents() {
         let now = Date.now();
         return this.hasEventOn(new Date(now));
+    }
+
+    /**
+     * Get an event duration
+     * @param Event
+     * @return int
+     */
+    getEventDuration(event) {
+        return event.getEndTime() - event.getStartTime()
     }
     
 }
