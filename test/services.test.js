@@ -63,4 +63,23 @@ describe("Event Service",()=> {
         let eventService = new EventService(new EventRepository());
         expect(eventService.getEventByTitle("New Event by Yannick")).toEqual( new Event(new Date('2019-12-17T10:30:00'),new Date('2019-12-17T18:00:00'),"New Event by Yannick","Campus Numerique","This is NOT an hello world.."));
     })
+
+    test('isLocationAvailable shall return false', async() => {
+        let eventService = new EventService(new EventRepository());
+        expect(eventService.isLocationAvailable(new Date('2019-12-17T14:45:00'))).toBe(false);
+    })
+    test('isLocationAvailable shall return true', async() => {
+        let eventService = new EventService(new EventRepository());
+        expect(eventService.isLocationAvailable(new Date('2017-12-17T14:45:00'))).toBe(true);
+    })
+
+    test('getCurrentEvents shall return a result', async() => {
+        let eventService = new EventService(new EventRepository());
+        let startDate = new Date();
+        startDate.setHours(startDate.getHours() - 2);
+        let endDate = new Date();
+        endDate.setHours(endDate.getHours() + 2);
+        fakeEvents.push(new Event(startDate,endDate,"Event for now","Campus Numerique","Just for testing getCurrentEvents"));
+        expect(eventService.getCurrentEvents().length).toBe(1);
+    })
 });

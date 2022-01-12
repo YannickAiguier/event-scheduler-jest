@@ -116,12 +116,12 @@ export default class EventService {
         return result;
     }
 
-    // A implementer en TDD
     /**
      *
      * @param {Date} time
      */
     isLocationAvailable(time) {
+        return this.hasEventOn(time).length == 0;
     }
 
     /**
