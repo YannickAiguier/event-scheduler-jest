@@ -47,4 +47,9 @@ describe("Event Service",()=> {
        let eventService = new EventService(new EventRepository());
        expect(eventService.getLongestEvent().getTitle()).toEqual("Hello World");
     })
+
+    test('getShortestEvent shall return event with "Hello World" title', async() => {
+        let eventService = new EventService(new EventRepository());
+        expect(eventService.getShortestEvent().getTitle()).toEqual("Hello World");
+    })
 });
