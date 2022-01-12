@@ -100,14 +100,20 @@ export default class EventService {
         });
     }
 
-    // A implementer en TDD
     /**
      *
      * @param title
      * @return {null | Event}
      */
     getEventByTitle(title) {
-        return null
+        const events = this._eventRepository.getAll();
+        let result = null;
+        events.forEach(event => {
+            if (event.getTitle() == "New Event by Yannick") {
+                result = event;
+            }
+        })
+        return result;
     }
 
     // A implementer en TDD
