@@ -88,7 +88,6 @@ export default class EventService {
        return shortestEvent;
     }
 
-    // A implementer en TDD
     /**
      *
      * @param {Date} time
