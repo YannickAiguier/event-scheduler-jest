@@ -46,7 +46,14 @@ export default class EventService {
      * @return {null | Event}
      */
     getLastEvent() {
-        return null; //TODO
+      const events = this._eventRepository.getAll();
+      let lastEvent = events[0];
+      events.forEach(event => {
+         if (event.getStartTime() > lastEvent.getStartTime()) {
+           lastEvent = event;
+         }
+      });
+       return lastEvent;
     }
 
     /**
