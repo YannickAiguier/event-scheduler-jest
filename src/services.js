@@ -80,7 +80,7 @@ export default class EventService {
        let shortestEvent = null;
        events.forEach(event => {
            if (this.getEventDuration(event) >= 0) {
-               if (shortestEvent == null || this.getEventDuration(event) < shortestEvent) {
+               if (shortestEvent == null || this.getEventDuration(event) < this.getEventDuration(shortestEvent)) {
                    shortestEvent = event;
                }
            }
@@ -139,7 +139,10 @@ export default class EventService {
      * @return int
      */
     getEventDuration(event) {
-        return event.getEndTime() - event.getStartTime()
+        if (event != null) {
+            return event.getEndTime() - event.getStartTime()
+        }
+        return 0;
     }
     
 }
