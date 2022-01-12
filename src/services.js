@@ -31,7 +31,14 @@ export default class EventService {
      * @return {null | Event}
      */
     getFirstEvent() {
-        return null; //TODO
+       const events = this._eventRepository.getAll();
+       let firstEvent = events[0];
+       events.forEach(event => {
+          if (event.getStartTime() < firstEvent.getStartTime()) {
+            firstEvent = event;
+          }
+       });
+        return firstEvent;
     }
 
     /**

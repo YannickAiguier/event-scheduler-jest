@@ -32,4 +32,9 @@ describe("Event Service",()=> {
         let eventService = new EventService(new EventRepository());
         expect(eventService.getEvents().length).toBe(3);
     })
+
+    test('getFirst event', async() => {
+       let eventService = new EventService(new EventRepository());
+       expect(eventService.getFirstEvent().getStartTime()).toEqual(new Date('2018-12-17T02:24:00.000Z'));
+    })
 });
