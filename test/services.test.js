@@ -35,11 +35,11 @@ describe("Event Service",()=> {
 
     test('getFirst event shall return event with 2018-12-17 start date', async() => {
        let eventService = new EventService(new EventRepository());
-       expect(eventService.getFirstEvent().getStartTime()).toEqual(new Date('2018-12-17T02:24:00.000Z'));
+       expect(eventService.getFirstEvent().getStartTime()).toEqual(new Date('2018-12-17T03:24:00'));
     })
 
     test('getLastEvent shall return event with 2020-04-01 start date', async() => {
        let eventService = new EventService(new EventRepository());
-       expect(eventService.getLastEvent().getStartTime()).toEqual(new Date('2020-04-01T09:00:00.000Z'));
+       expect(eventService.getLastEvent().getStartTime()).toEqual(new Date('2020-04-01T09:00:00'));
     })
 });
