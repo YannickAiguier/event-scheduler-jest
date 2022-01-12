@@ -76,7 +76,16 @@ export default class EventService {
      * @return {null | Event}
      */
     getShortestEvent() {
-        return null; //TODO
+       const events = this._eventRepository.getAll();
+       let shortestEvent = null;
+       events.forEach(event => {
+           if (this.getEventDuration(event) >= 0) {
+               if (shortestEvent == null || this.getEventDuration(event) < shortestEvent) {
+                   shortestEvent = event;
+               }
+           }
+       })
+       return shortestEvent;
     }
 
     // A implementer en TDD
