@@ -5,9 +5,9 @@ name: event-scheduler CI
 
 on:
   push:
-    branches: [ master ]
+    branches: [ all ]
   pull_request:
-    branches: [ master ]
+    branches: [ all ]
 
 jobs:
   build:
