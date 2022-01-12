@@ -4,7 +4,14 @@
   "private": true,
   "scripts": {
     "start": "nodemon bin/www --exec babel-node",
-    "test": "jest"
+    "test": "jest",
+    "testcoverage": "jest --coverage"
+  },
+  "jest": {
+    "reporters": [
+        "default",
+        "jest-html-reporters"
+    ]
   },
   "dependencies": {
     "bootstrap": "^4.4.1",
@@ -26,6 +33,7 @@
     "@babel/polyfill": "^7.8.7",
     "@babel/preset-env": "^7.9.0",
     "jest": "^25.5.4",
+    "jest-html-reporters": "^3.0.3",
     "node-mocks-http": "^1.8.1",
     "nodemon": "^2.0.2"
   }
